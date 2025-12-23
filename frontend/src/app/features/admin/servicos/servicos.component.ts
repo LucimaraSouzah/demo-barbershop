@@ -324,12 +324,14 @@ export class ServicosComponent implements OnInit {
     }
 
     // PRIORIDADE 2: Mapear nomes dos serviços para imagens locais (assets/img)
+    // Usando caminhos relativos para funcionar com base-href
+    const baseHref = document.querySelector('base')?.getAttribute('href') || '/';
     const localImages: { [key: string]: string } = {
-      'Corte Masculino': '/assets/img/corte-masculino.jpg',
-      'Barba': '/assets/img/barba.png',
-      'Corte + Barba': '/assets/img/barba-corte.jpg',
-      'Sobrancelha': '/assets/img/sobrancelha.jpg',
-      'Pigmentação de Barba': '/assets/img/pigmentacao-barba.png',
+      'Corte Masculino': `${baseHref}assets/img/corte-masculino.jpg`,
+      'Barba': `${baseHref}assets/img/barba.png`,
+      'Corte + Barba': `${baseHref}assets/img/barba-corte.jpg`,
+      'Sobrancelha': `${baseHref}assets/img/sobrancelha.jpg`,
+      'Pigmentação de Barba': `${baseHref}assets/img/pigmentacao-barba.png`,
       'Relaxamento Capilar': 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&h=600&fit=crop&q=80&auto=format'
     };
 

@@ -590,12 +590,14 @@ export class HomeComponent implements OnInit {
 
     // PRIORIDADE 2: Mapear nomes dos serviços para imagens locais (assets/img)
     // Baseado nos arquivos existentes na pasta frontend/src/assets/img
+    // Usando caminhos relativos para funcionar com base-href
+    const baseHref = document.querySelector('base')?.getAttribute('href') || '/';
     const localImages: { [key: string]: string } = {
-      'Corte Masculino': '/assets/img/corte-masculino.jpg',
-      'Barba': '/assets/img/barba.png',
-      'Corte + Barba': '/assets/img/barba-corte.jpg',
-      'Sobrancelha': '/assets/img/sobrancelha.jpg',
-      'Pigmentação de Barba': '/assets/img/pigmentacao-barba.png'
+      'Corte Masculino': `${baseHref}assets/img/corte-masculino.jpg`,
+      'Barba': `${baseHref}assets/img/barba.png`,
+      'Corte + Barba': `${baseHref}assets/img/barba-corte.jpg`,
+      'Sobrancelha': `${baseHref}assets/img/sobrancelha.jpg`,
+      'Pigmentação de Barba': `${baseHref}assets/img/pigmentacao-barba.png`
     };
 
     // Se tem imagem local, usa ela
