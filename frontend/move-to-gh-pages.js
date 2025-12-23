@@ -32,10 +32,17 @@ if (fs.existsSync(browserDir)) {
 
 // Cria arquivo .nojekyll para desabilitar o processamento Jekyll
 const nojekyllPath = path.join(docsDir, '.nojekyll');
-if (!fs.existsSync(nojekyllPath)) {
-  fs.writeFileSync(nojekyllPath, '');
-  console.log('✅ Arquivo .nojekyll criado');
-}
+fs.writeFileSync(nojekyllPath, '');
+console.log('✅ Arquivo .nojekyll criado/atualizado');
+
+// Cria arquivo _config.yml mínimo para desabilitar Jekyll explicitamente
+const configPath = path.join(docsDir, '_config.yml');
+const configContent = `# Desabilita completamente o Jekyll
+# Este arquivo garante que o GitHub Pages não tente processar com Jekyll
+plugins: []
+`;
+fs.writeFileSync(configPath, configContent);
+console.log('✅ Arquivo _config.yml criado/atualizado');
 
 console.log('✅ Arquivos movidos para a raiz de docs/');
 

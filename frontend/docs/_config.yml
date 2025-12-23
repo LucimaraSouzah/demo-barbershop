@@ -1,0 +1,3 @@
+# Desabilita completamente o Jekyll
+# Este arquivo garante que o GitHub Pages não tente processar com Jekyll
+plugins: []
