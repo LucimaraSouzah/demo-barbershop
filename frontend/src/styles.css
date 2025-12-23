@@ -1,0 +1,143 @@
+/* Import Google Fonts - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+  height: 100%; 
+  scroll-behavior: smooth;
+}
+
+body { 
+  margin: 0; 
+  font-family: 'Inter', Roboto, "Helvetica Neue", sans-serif;
+  background-color: #ececec;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles - tom preto elegante */
+.dark body {
+  background-color: #1a1a1a;
+  color: #fafafa;
+}
+
+/* Custom styles */
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-secondary text-primary font-semibold py-3 px-8 rounded-md hover:bg-gold-400 hover:shadow-gold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-primary text-white font-semibold py-3 px-8 rounded-md hover:bg-charcoal-800 transition-all duration-300 border-2 border-secondary hover:border-gold-400;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-secondary text-secondary font-semibold py-3 px-8 rounded-md hover:bg-secondary hover:text-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
+  }
+  
+  .card {
+    @apply bg-gray-100 dark:bg-gray-900 rounded-xl shadow-elegant p-6 transition-all duration-300 hover:shadow-elegant-lg;
+  }
+  
+  .card-service {
+    @apply bg-gray-100 dark:bg-gray-900 rounded-xl shadow-elegant overflow-hidden transition-all duration-300 hover:shadow-elegant-lg hover:scale-105 cursor-pointer focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
+  }
+  
+  .card-service:focus-visible {
+    @apply scale-105 shadow-elegant-lg;
+  }
+  
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold text-primary dark:text-white mb-4 text-center;
+  }
+  
+  .section-subtitle {
+    @apply text-xl text-charcoal-600 dark:text-gray-300 mb-12 text-center max-w-2xl mx-auto;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-secondary via-gold-400 to-secondary bg-clip-text text-transparent;
+  }
+  
+  .overlay-dark {
+    @apply absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60;
+  }
+
+  /* Inputs e formulários dark mode - tom preto */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="number"],
+  input[type="url"],
+  textarea,
+  select {
+    @apply dark:bg-gray-800 dark:text-white dark:border-gray-700;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="date"]:focus,
+  input[type="number"]:focus,
+  input[type="url"]:focus,
+  textarea:focus,
+  select:focus {
+    @apply dark:ring-secondary dark:border-secondary;
+  }
+
+  /* Tabelas dark mode */
+  table {
+    @apply dark:text-white;
+  }
+
+  th {
+    @apply dark:text-white dark:border-gray-600;
+  }
+
+  td {
+    @apply dark:text-white dark:border-gray-600;
+  }
+
+  /* Linhas de tabela dark mode */
+  tr {
+    @apply dark:border-gray-600;
+  }
+
+  tr:hover {
+    @apply dark:bg-gray-700;
+  }
+
+  /* Textos em geral - melhor contraste no dark mode */
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    @apply text-white;
+  }
+
+  /* Garantir que textos escuros fiquem claros no dark mode */
+  .dark .text-charcoal-700,
+  .dark .text-charcoal-600,
+  .dark .text-charcoal-500,
+  .dark .text-gray-600 {
+    @apply text-gray-200;
+  }
+
+  /* Border colors no dark mode */
+  .dark .border-gray-100,
+  .dark .border-gray-200 {
+    @apply border-gray-700;
+  }
+}
