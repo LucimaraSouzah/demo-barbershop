@@ -157,8 +157,79 @@ export class MockApiService {
     if (!localStorage.getItem(this.STORAGE_KEYS.AGENDAMENTOS)) {
       localStorage.setItem(this.STORAGE_KEYS.AGENDAMENTOS, JSON.stringify([]));
     }
-    if (!localStorage.getItem(this.STORAGE_KEYS.FEEDBACKS)) {
-      localStorage.setItem(this.STORAGE_KEYS.FEEDBACKS, JSON.stringify([]));
+    // Inicializar feedbacks - criar mock apenas se não existir ou estiver vazio
+    const feedbacksStorage = localStorage.getItem(this.STORAGE_KEYS.FEEDBACKS);
+    let feedbacksExistentes: Feedback[] = [];
+    try {
+      feedbacksExistentes = feedbacksStorage ? JSON.parse(feedbacksStorage) : [];
+    } catch {
+      feedbacksExistentes = [];
+    }
+    
+    if (feedbacksExistentes.length === 0) {
+      const feedbacksMock: Feedback[] = [
+        {
+          id: 1,
+          nome: 'Carlos Silva',
+          avaliacao: 5,
+          comentario: 'Excelente atendimento! O barbeiro foi muito profissional e atencioso. O corte ficou exatamente como eu queria. Com certeza voltarei!',
+          fotoUrl: undefined,
+          aprovado: true,
+          respostaAdmin: undefined,
+          criadoEm: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() // 5 dias atrás
+        },
+        {
+          id: 2,
+          nome: 'João Pedro Santos',
+          avaliacao: 5,
+          comentario: 'Melhor barbearia da cidade! Ambiente limpo, profissionais qualificados e preço justo. Recomendo para todos!',
+          fotoUrl: undefined,
+          aprovado: true,
+          respostaAdmin: undefined,
+          criadoEm: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() // 3 dias atrás
+        },
+        {
+          id: 3,
+          nome: 'Roberto Almeida',
+          avaliacao: 5,
+          comentario: 'Atendimento de primeira! Fui muito bem recebido, o serviço foi rápido e com muita qualidade. Valeu cada centavo!',
+          fotoUrl: undefined,
+          aprovado: true,
+          respostaAdmin: undefined,
+          criadoEm: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() // 7 dias atrás
+        },
+        {
+          id: 4,
+          nome: 'Lucas Ferreira',
+          avaliacao: 5,
+          comentario: 'Profissionais muito competentes e ambiente agradável. O corte ficou perfeito, exatamente o que eu precisava. Super recomendo!',
+          fotoUrl: undefined,
+          aprovado: true,
+          respostaAdmin: undefined,
+          criadoEm: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() // 2 dias atrás
+        },
+        {
+          id: 5,
+          nome: 'Marcos Oliveira',
+          avaliacao: 5,
+          comentario: 'Atendimento impecável! O barbeiro entendeu perfeitamente o que eu queria e o resultado superou minhas expectativas. Excelente trabalho!',
+          fotoUrl: undefined,
+          aprovado: true,
+          respostaAdmin: undefined,
+          criadoEm: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString() // 10 dias atrás
+        },
+        {
+          id: 6,
+          nome: 'Felipe Costa',
+          avaliacao: 5,
+          comentario: 'Barbearia de qualidade! Ambiente moderno, profissionais experientes e atendimento personalizado. Ficou excelente!',
+          fotoUrl: undefined,
+          aprovado: true,
+          respostaAdmin: undefined,
+          criadoEm: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() // 1 dia atrás
+        }
+      ];
+      localStorage.setItem(this.STORAGE_KEYS.FEEDBACKS, JSON.stringify(feedbacksMock));
     }
   }
 
