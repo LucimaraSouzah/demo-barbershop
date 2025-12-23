@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B6914;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#0a0a0a" stroke="url(#goldGradient)" stroke-width="3"/>
+  
+  <!-- Barber scissors / Tesoura -->
+  <g transform="translate(50, 45)">
+    <!-- Left blade -->
+    <path d="M -15 -8 L -20 20 L -8 15 L 0 0 Z" fill="url(#goldGradient)" stroke="#D4AF37" stroke-width="1"/>
+    <!-- Right blade -->
+    <path d="M 15 -8 L 20 20 L 8 15 L 0 0 Z" fill="url(#goldGradient)" stroke="#D4AF37" stroke-width="1"/>
+    <!-- Center pivot -->
+    <circle cx="0" cy="0" r="4" fill="#0a0a0a" stroke="#D4AF37" stroke-width="2"/>
+    <!-- Handles -->
+    <ellipse cx="-12" cy="18" rx="3" ry="6" fill="url(#goldGradient)"/>
+    <ellipse cx="12" cy="18" rx="3" ry="6" fill="url(#goldGradient)"/>
+  </g>
+  
+  <!-- Decorative dots -->
+  <circle cx="50" cy="75" r="3" fill="#D4AF37" opacity="0.6"/>
+  <circle cx="50" cy="82" r="2" fill="#D4AF37" opacity="0.4"/>
+</svg>
+
