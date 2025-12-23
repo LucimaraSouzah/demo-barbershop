@@ -166,7 +166,10 @@ export class MockApiService {
       feedbacksExistentes = [];
     }
     
-    if (feedbacksExistentes.length === 0) {
+    // Verificar se já tem os feedbacks mockados (IDs 1-6)
+    const temFeedbacksMock = feedbacksExistentes.some(f => f.id >= 1 && f.id <= 6);
+    
+    if (feedbacksExistentes.length === 0 || !temFeedbacksMock) {
       const feedbacksMock: Feedback[] = [
         {
           id: 1,
