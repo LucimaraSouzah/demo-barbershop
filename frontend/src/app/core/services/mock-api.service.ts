@@ -157,7 +157,7 @@ export class MockApiService {
     if (!localStorage.getItem(this.STORAGE_KEYS.AGENDAMENTOS)) {
       localStorage.setItem(this.STORAGE_KEYS.AGENDAMENTOS, JSON.stringify([]));
     }
-    // Inicializar feedbacks - criar mock apenas se não existir ou estiver vazio
+    // Inicializar feedbacks - criar mock apenas se não existir ou não tiver os feedbacks mockados
     const feedbacksStorage = localStorage.getItem(this.STORAGE_KEYS.FEEDBACKS);
     let feedbacksExistentes: Feedback[] = [];
     try {
@@ -166,8 +166,10 @@ export class MockApiService {
       feedbacksExistentes = [];
     }
     
-    // Verificar se já tem os feedbacks mockados (IDs 1-6)
-    const temFeedbacksMock = feedbacksExistentes.some(f => f.id >= 1 && f.id <= 6);
+    // Verificar se já tem feedbacks mockados (IDs 1-6) ou se o array está vazio
+    // Se não tiver, criar os feedbacks mockados para demo
+    const temFeedbacksMock = feedbacksExistentes.length > 0 && 
+                             feedbacksExistentes.some(f => f.id >= 1 && f.id <= 6 && f.aprovado);
     
     if (feedbacksExistentes.length === 0 || !temFeedbacksMock) {
       const feedbacksMock: Feedback[] = [
@@ -232,6 +234,7 @@ export class MockApiService {
           criadoEm: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString() // 1 dia atrás
         }
       ];
+      // Sempre substituir com os feedbacks mockados se não existirem
       localStorage.setItem(this.STORAGE_KEYS.FEEDBACKS, JSON.stringify(feedbacksMock));
     }
   }
