@@ -43,24 +43,24 @@ interface DashboardData {
 
       <!-- Próximos Agendamentos -->
       <div class="card overflow-hidden">
-        <h2 class="text-lg sm:text-xl font-semibold mb-4">Próximos Agendamentos</h2>
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-charcoal-900 dark:text-white">Próximos Agendamentos</h2>
         <div class="overflow-x-auto">
           <table class="w-full min-w-[600px]">
             <thead>
-              <tr class="border-b">
-                <th class="text-left p-2">Cliente</th>
-                <th class="text-left p-2">Serviço</th>
-                <th class="text-left p-2">Data/Hora</th>
-                <th class="text-left p-2">Status</th>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Cliente</th>
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Serviço</th>
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Data/Hora</th>
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let agendamento of proximosAgendamentos" class="border-b">
-                <td class="p-2">{{ agendamento.clienteNome }}</td>
-                <td class="p-2">{{ agendamento.servicoNome }}</td>
-                <td class="p-2">{{ formatarDataHora(agendamento.dataHora) }}</td>
+              <tr *ngFor="let agendamento of proximosAgendamentos" class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
+                <td class="p-2 text-charcoal-900 dark:text-gray-200">{{ agendamento.clienteNome }}</td>
+                <td class="p-2 text-charcoal-900 dark:text-gray-200">{{ agendamento.servicoNome }}</td>
+                <td class="p-2 text-charcoal-900 dark:text-gray-200">{{ formatarDataHora(agendamento.dataHora) }}</td>
                 <td class="p-2">
-                  <span class="px-2 py-1 rounded text-sm" [class.bg-yellow-100]="agendamento.status === 'Pendente'">
+                  <span class="px-2 py-1 rounded text-sm dark:text-gray-900" [class.bg-yellow-100]="agendamento.status === 'Pendente'" [class.dark:bg-yellow-400]="agendamento.status === 'Pendente'">
                     {{ agendamento.status }}
                   </span>
                 </td>
@@ -72,11 +72,11 @@ interface DashboardData {
 
       <!-- Feedbacks Recentes -->
       <div class="card">
-        <h2 class="text-lg sm:text-xl font-semibold mb-4">Feedbacks Recentes</h2>
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-charcoal-900 dark:text-white">Feedbacks Recentes</h2>
         <div class="space-y-4">
-          <div *ngFor="let feedback of feedbacksRecentes" class="border-b pb-4">
+          <div *ngFor="let feedback of feedbacksRecentes" class="border-b border-gray-200 dark:border-gray-700 pb-4">
             <div class="flex items-center justify-between mb-2">
-              <span class="font-semibold">{{ feedback.nome }}</span>
+              <span class="font-semibold text-charcoal-900 dark:text-white">{{ feedback.nome }}</span>
               <div class="flex text-yellow-400">
                 <span *ngFor="let i of [1,2,3,4,5]">
                   <svg *ngIf="i <= feedback.avaliacao" class="w-4 h-4 fill-current" viewBox="0 0 20 20">
@@ -85,7 +85,7 @@ interface DashboardData {
                 </span>
               </div>
             </div>
-            <p class="text-gray-600 text-sm">{{ feedback.comentario }}</p>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">{{ feedback.comentario }}</p>
           </div>
         </div>
       </div>

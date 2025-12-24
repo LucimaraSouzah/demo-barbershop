@@ -9,31 +9,31 @@ import { AuthService } from '../../../core/services/auth.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
-    <div class="min-h-screen flex items-center justify-center bg-gray-100">
-      <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-        <h1 class="text-3xl font-bold text-center mb-8 text-primary">
+    <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <div class="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition-colors duration-300">
+        <h1 class="text-3xl font-bold text-center mb-8 text-primary dark:text-white">
           Painel Administrativo
         </h1>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
           <div>
-            <label class="block text-sm font-medium mb-2">Email</label>
+            <label class="block text-sm font-medium mb-2 text-charcoal-700 dark:text-gray-200">Email</label>
             <input
               type="email"
               formControlName="email"
-              class="w-full p-2 border rounded-lg"
+              class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary"
               required
             />
           </div>
           <div>
-            <label class="block text-sm font-medium mb-2">Senha</label>
+            <label class="block text-sm font-medium mb-2 text-charcoal-700 dark:text-gray-200">Senha</label>
             <input
               type="password"
               formControlName="senha"
-              class="w-full p-2 border rounded-lg"
+              class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary"
               required
             />
           </div>
-          <div *ngIf="error" class="text-red-500 text-sm">
+          <div *ngIf="error" class="text-red-600 dark:text-red-400 text-sm">
             {{ error }}
           </div>
           <button

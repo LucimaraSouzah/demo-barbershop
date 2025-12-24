@@ -29,9 +29,9 @@ interface Agendamento {
             type="date"
             [(ngModel)]="dataFiltro"
             (change)="carregarAgendamentos()"
-            class="p-2 border rounded-lg flex-1"
+            class="p-2 border border-gray-300 dark:border-gray-600 rounded-lg flex-1 bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary"
           />
-          <select [(ngModel)]="statusFiltro" (change)="carregarAgendamentos()" class="p-2 border rounded-lg flex-1 sm:flex-initial sm:w-auto">
+          <select [(ngModel)]="statusFiltro" (change)="carregarAgendamentos()" class="p-2 border border-gray-300 dark:border-gray-600 rounded-lg flex-1 sm:flex-initial sm:w-auto bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary">
             <option value="">Todos os Status</option>
             <option value="1">Pendente</option>
             <option value="2">Confirmado</option>
@@ -43,26 +43,26 @@ interface Agendamento {
         <div class="overflow-x-auto">
           <table class="w-full min-w-[800px]">
           <thead>
-            <tr class="border-b">
-              <th class="text-left p-2">Cliente</th>
-              <th class="text-left p-2">Telefone</th>
-              <th class="text-left p-2">Serviço</th>
-              <th class="text-left p-2">Data/Hora</th>
-              <th class="text-left p-2">Status</th>
-              <th class="text-left p-2">Ações</th>
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+              <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Cliente</th>
+              <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Telefone</th>
+              <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Serviço</th>
+              <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Data/Hora</th>
+              <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Status</th>
+              <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Ações</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let agendamento of agendamentos" class="border-b">
-              <td class="p-2">{{ agendamento.clienteNome }}</td>
-              <td class="p-2">{{ agendamento.clienteTelefone }}</td>
-              <td class="p-2">{{ agendamento.servicoNome }}</td>
-              <td class="p-2">{{ formatarDataHora(agendamento.dataHora) }}</td>
+            <tr *ngFor="let agendamento of agendamentos" class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
+              <td class="p-2 text-charcoal-900 dark:text-gray-200">{{ agendamento.clienteNome }}</td>
+              <td class="p-2 text-charcoal-900 dark:text-gray-200">{{ agendamento.clienteTelefone }}</td>
+              <td class="p-2 text-charcoal-900 dark:text-gray-200">{{ agendamento.servicoNome }}</td>
+              <td class="p-2 text-charcoal-900 dark:text-gray-200">{{ formatarDataHora(agendamento.dataHora) }}</td>
               <td class="p-2">
                 <select
                   [value]="agendamento.status"
                   (change)="atualizarStatus(agendamento.id, $event)"
-                  class="p-1 border rounded"
+                  class="p-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary"
                 >
                   <option value="Pendente">Pendente</option>
                   <option value="Confirmado">Confirmado</option>
@@ -71,7 +71,7 @@ interface Agendamento {
                 </select>
               </td>
               <td class="p-2">
-                <button (click)="excluir(agendamento.id)" class="text-red-600">Excluir</button>
+                <button (click)="excluir(agendamento.id)" class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300">Excluir</button>
               </td>
             </tr>
           </tbody>

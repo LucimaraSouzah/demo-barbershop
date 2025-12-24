@@ -31,19 +31,19 @@ interface Servico {
         <div class="overflow-x-auto">
           <table class="w-full min-w-[640px]">
             <thead>
-              <tr class="border-b">
-                <th class="text-left p-2">Imagem</th>
-                <th class="text-left p-2">Nome</th>
-                <th class="text-left p-2">Duração</th>
-                <th class="text-left p-2">Preço</th>
-                <th class="text-left p-2">Status</th>
-                <th class="text-left p-2">Ações</th>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Imagem</th>
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Nome</th>
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Duração</th>
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Preço</th>
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Status</th>
+                <th class="text-left p-2 text-charcoal-700 dark:text-gray-300">Ações</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let servico of servicos" class="border-b hover:bg-gray-50">
+              <tr *ngFor="let servico of servicos" class="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
                 <td class="p-2">
-                  <div class="w-12 h-12 sm:w-16 sm:h-16 rounded overflow-hidden border border-gray-200 bg-gray-100">
+                  <div class="w-12 h-12 sm:w-16 sm:h-16 rounded overflow-hidden border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-700">
                     <img 
                       [src]="getServiceImageUrl(servico)" 
                       [alt]="servico.nome"
@@ -53,18 +53,18 @@ interface Servico {
                     />
                   </div>
                 </td>
-                <td class="p-2 font-medium text-sm sm:text-base">{{ servico.nome }}</td>
-                <td class="p-2 text-sm sm:text-base">{{ servico.duracao }} min</td>
-                <td class="p-2 text-sm sm:text-base">R$ {{ servico.preco.toFixed(2) }}</td>
+                <td class="p-2 font-medium text-sm sm:text-base text-charcoal-900 dark:text-gray-200">{{ servico.nome }}</td>
+                <td class="p-2 text-sm sm:text-base text-charcoal-900 dark:text-gray-200">{{ servico.duracao }} min</td>
+                <td class="p-2 text-sm sm:text-base text-charcoal-900 dark:text-gray-200">R$ {{ servico.preco.toFixed(2) }}</td>
                 <td class="p-2">
-                  <span [class.text-green-600]="servico.ativo" [class.text-red-600]="!servico.ativo" class="font-medium text-xs sm:text-sm">
+                  <span [class.text-green-600]="servico.ativo" [class.dark:text-green-400]="servico.ativo" [class.text-red-600]="!servico.ativo" [class.dark:text-red-400]="!servico.ativo" class="font-medium text-xs sm:text-sm">
                     {{ servico.ativo ? 'Ativo' : 'Inativo' }}
                   </span>
                 </td>
                 <td class="p-2">
                   <div class="flex flex-col sm:flex-row gap-1 sm:gap-2">
-                    <button (click)="editar(servico)" class="text-blue-600 hover:text-blue-800 font-medium text-xs sm:text-sm">Editar</button>
-                    <button (click)="excluir(servico.id)" class="text-red-600 hover:text-red-800 font-medium text-xs sm:text-sm">Excluir</button>
+                    <button (click)="editar(servico)" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-xs sm:text-sm">Editar</button>
+                    <button (click)="excluir(servico.id)" class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 font-medium text-xs sm:text-sm">Excluir</button>
                   </div>
                 </td>
               </tr>
@@ -75,35 +75,35 @@ interface Servico {
 
       <!-- Modal -->
       <div *ngIf="mostrarModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
-        <div class="bg-gray-100 rounded-lg p-4 sm:p-6 max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto dark:bg-gray-900">
-          <h2 class="text-2xl font-bold mb-4">{{ servicoEditando ? 'Editar' : 'Novo' }} Serviço</h2>
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 sm:p-6 max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto transition-colors duration-300">
+          <h2 class="text-2xl font-bold mb-4 text-charcoal-900 dark:text-white">{{ servicoEditando ? 'Editar' : 'Novo' }} Serviço</h2>
           <form [formGroup]="formulario" (ngSubmit)="salvar()" class="space-y-4">
             <div>
-              <label class="block text-sm font-medium mb-2">Nome *</label>
-              <input type="text" formControlName="nome" class="w-full p-2 border rounded-lg" />
+              <label class="block text-sm font-medium mb-2 text-charcoal-700 dark:text-gray-300">Nome *</label>
+              <input type="text" formControlName="nome" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary" />
             </div>
             <div>
-              <label class="block text-sm font-medium mb-2">Descrição</label>
-              <textarea formControlName="descricao" rows="3" class="w-full p-2 border rounded-lg"></textarea>
+              <label class="block text-sm font-medium mb-2 text-charcoal-700 dark:text-gray-300">Descrição</label>
+              <textarea formControlName="descricao" rows="3" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary"></textarea>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium mb-2">Duração (min) *</label>
-                <input type="number" formControlName="duracao" class="w-full p-2 border rounded-lg" />
+                <label class="block text-sm font-medium mb-2 text-charcoal-700 dark:text-gray-300">Duração (min) *</label>
+                <input type="number" formControlName="duracao" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary" />
               </div>
               <div>
-                <label class="block text-sm font-medium mb-2">Preço *</label>
-                <input type="number" step="0.01" formControlName="preco" class="w-full p-2 border rounded-lg" />
+                <label class="block text-sm font-medium mb-2 text-charcoal-700 dark:text-gray-300">Preço *</label>
+                <input type="number" step="0.01" formControlName="preco" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary" />
               </div>
             </div>
             <!-- Upload de Imagem -->
             <div>
-              <label class="block text-sm font-medium mb-2">Imagem do Serviço</label>
+              <label class="block text-sm font-medium mb-2 text-charcoal-700 dark:text-gray-300">Imagem do Serviço</label>
               
               <!-- Preview da Imagem -->
               <div *ngIf="imagemPreview" class="mb-4 relative">
                 <div class="relative group">
-                  <img [src]="imagemPreview" alt="Preview da imagem" class="w-full h-64 object-cover rounded-lg border-2 border-gray-300 shadow-md" />
+                  <img [src]="imagemPreview" alt="Preview da imagem" class="w-full h-64 object-cover rounded-lg border-2 border-gray-300 dark:border-gray-600 shadow-md" />
                   <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity rounded-lg flex items-center justify-center">
                     <button 
                       type="button" 
@@ -117,7 +117,7 @@ interface Servico {
                 <button 
                   type="button" 
                   (click)="removerImagem()" 
-                  class="mt-2 text-red-600 text-sm hover:text-red-800 font-medium inline-flex items-center gap-1"
+                  class="mt-2 text-red-600 dark:text-red-400 text-sm hover:text-red-800 dark:hover:text-red-300 font-medium inline-flex items-center gap-1"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
@@ -175,10 +175,10 @@ interface Servico {
                 <!-- Ou URL -->
                 <div class="relative">
                   <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-300"></div>
+                    <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
                   </div>
                   <div class="relative flex justify-center text-sm">
-                    <span class="px-2 bg-white text-gray-500">ou</span>
+                    <span class="px-2 bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400">ou</span>
                   </div>
                 </div>
 
@@ -187,23 +187,23 @@ interface Servico {
                   type="url" 
                   formControlName="imagemUrl" 
                   placeholder="Cole a URL da imagem (ex: https://exemplo.com/imagem.jpg)"
-                  class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary"
+                  class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary"
                   (input)="onUrlChange()"
                   (focus)="imagemFile = null"
                 />
-                <p class="text-xs text-gray-500">
+                <p class="text-xs text-gray-500 dark:text-gray-400">
                   Formatos aceitos: JPG, PNG, GIF. Tamanho máximo: 5MB
                 </p>
               </div>
             </div>
             <div class="flex items-center gap-4">
-              <label class="flex items-center">
+              <label class="flex items-center text-charcoal-900 dark:text-white">
                 <input type="checkbox" formControlName="ativo" class="mr-2" />
                 Ativo
               </label>
               <div>
-                <label class="block text-sm font-medium mb-2">Ordem</label>
-                <input type="number" formControlName="ordem" class="w-20 p-2 border rounded-lg" />
+                <label class="block text-sm font-medium mb-2 text-charcoal-700 dark:text-gray-300">Ordem</label>
+                <input type="number" formControlName="ordem" class="w-20 p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-charcoal-900 dark:text-white focus:ring-2 focus:ring-secondary focus:border-secondary" />
               </div>
             </div>
             <div class="flex gap-4">
